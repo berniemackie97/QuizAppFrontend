@@ -3,11 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { ContextProvider } from './hooks/useStateContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark'
+  },
+});
+
 root.render(
   <React.StrictMode>
-    <App />
+    <ContextProvider>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline/>
+        <App />
+      </ThemeProvider>
+    </ContextProvider>
   </React.StrictMode>
 );
 
